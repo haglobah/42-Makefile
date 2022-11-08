@@ -28,10 +28,10 @@ $(NAME) : $(MAIN) $(SRCS) Makefile $(NAME).h $(LFT)
 	$(CC) $(CFLAGS) $(SRCS) $(LFT) -o $(NAME)
 
 clean :
-	@$(RM) $(OBJS) $(MO)
+	@$(RM) $(OBJS) $(MO) $(TOBJS)
 
 fclean : clean
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) $(TEST)
 
 re : fclean
 	@$(MAKE) all
