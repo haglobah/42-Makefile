@@ -40,6 +40,7 @@ run : all
 	./$(NAME)
 
 lsan : CFLAGS += -I../LeakSanitizer/include -L../LeakSanitizer -llsan -lc++
+lsan :
 	$(MAKE) all
 	./$(NAME)
 
@@ -48,19 +49,19 @@ test : $(TESTS) $(SRCS)
 	./$(TEST)
 
 checkup :
-    echo "Testing..."
-    $(MAKE) test
-    echo "Checking for memory leaks..."
-    $(MAKE) lsan
-    echo "Did you read the subject again, and have checked/asked for common mistakes?"
-    norminette *.c $(NAME).h
+	echo "Testing..."
+	$(MAKE) test
+	echo "Checking for memory leaks..."
+	$(MAKE) lsan
+	echo "Did you read the subject again, and have checked/asked for common mistakes?"
+	norminette *.c $(NAME).h
 
 submit :
 ifdef REPO
-    git remote add submit $(REPO)
-    git remote -v
+	git remote add submit $(REPO)
+	git remote -v
 else
-    @echo -e "You have to provide a repo:\n\n     make REPO=<the vogsphere repo> submit\n"
+	@echo -e "You have to provide a repo:\n\n     make REPO=<the vogsphere repo> submit\n"
 endif
 
 .PHONY: all clean fclean re run test checkup submit
