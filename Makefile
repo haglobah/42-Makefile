@@ -25,7 +25,7 @@ $(LFT) : $(LIBFT)
 	$(MAKE) -C $(LIBFT)
 
 $(NAME) : $(MAIN) $(SRCS) Makefile $(NAME).h $(LFT)
-	$(CC) $(CFLAGS) $(SRCS) $(LFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(MAIN) $(SRCS) $(LFT) -o $(NAME)
 
 clean :
 	@$(RM) $(OBJS) $(MO) $(TOBJS)
